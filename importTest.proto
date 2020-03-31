@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package importTest;
+
+message Result {
+	string url = 1;
+	string title = 2;
+	int32 code = 3;
+	bool bRet = 4;
+}

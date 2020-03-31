@@ -1,0 +1,48 @@
+
+syntax = "proto3";
+import "importTest.proto";
+package helloworld;
+
+// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+}
+
+enum Corpus {
+    UNIVERSAL = 0;//默认值，必须有
+    WEB = 1;
+    IMAGES = 2;
+    LOCAL = 3;
+    NEWS = 4;
+    PRODUCTS = 5;
+    VIDEO = 6;
+  }
+
+message Score {
+	int32 math = 1;
+}
+
+message Desc {
+	string test = 1;
+}
+
+// The request message containing the user's name.
+//proto3不允许optional,不允许有default
+message HelloRequest {
+  string name = 1;
+  int32 age = 2;
+  string addr = 3;
+  Corpus corpus = 4; //枚举
+  Score score = 5; //对像
+  repeated Desc desc = 6; //数组
+  importTest.Result result = 7; //引用
+  bool booly = 8;
+  map<string, string> map_array = 9; //map
+}
+
+// The response message containing the greetings
+message HelloReply {
+  string message = 1;
+  int32 code = 2;
+}
